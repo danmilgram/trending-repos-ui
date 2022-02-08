@@ -3,7 +3,7 @@
     <div class="row">
       <div class="col-sm-10">
         <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" width="10%">
-        <h1>Trending Github Repositories</h1>
+        <h1>Top 100 Trending Github Repositories</h1>
         <hr><br>
         <div v-for="r in repos" v-bind:key="r.id">
           <h4>Language: {{r.language}}</h4>
