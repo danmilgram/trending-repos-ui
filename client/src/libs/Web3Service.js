@@ -162,15 +162,36 @@ class Web3Service {
             this.getMainAccount()
             .then(account => {
                 console.log(account)
-                this.contractInst.getUserFavorites({ from: account }, (error, res) => {
+                this.contractInst.getUserFavourites({ from: account }, (error, res) => {
                     if (error) reject(error);
                     
                     resolve(res);
                     
-                    //Convert BigInt to string
+                    //Convert BigInt to string & delete 0 values
                     for (let i = 0; i < res.length; i++) {
-                        res[i] = res[i].toString();
+                        if (res[i] == 0){
+                            res.splice(i,1);
+                        }
+                        else{
+                            res[i] = res[i].toString();
+                        }
                       }
+                });
+            })
+            .catch(error => reject(error));
+        });
+    }
+
+
+    unsetFavourite(id) {
+        return new Promise((resolve, reject) => {
+            this.getMainAccount()
+            .then(account => {
+                console.log(account)
+                this.contractInst.unsetFavorite(id , { from: account }, (error, res) => {
+                    if (error) reject(error);
+
+                    resolve(res);
                 });
             })
             .catch(error => reject(error));

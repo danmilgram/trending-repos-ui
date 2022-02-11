@@ -21,9 +21,9 @@
                   <td>{{x.description}}</td>
                   <td><a target="_blank" :href="x.url">{{ x.url }}</a></td>
                   <td>    
-                  <input type="checkbox" 
+                  <input type="checkbox" style="cursor: pointer"
                         :checked="favs.includes(x.id.toString())"
-                        @change="setFavourite(x.id)">                     
+                        @change="onChange(x.id, $event)">                     
                   </td>
                 </tr>
               </tbody>
@@ -60,17 +60,14 @@ export default {
         });
     },
 
-    getTest() {
-      window.w3.getTest();
-    }, 
-
-    listenEvent(){
-      window.w3.listenEvent();
+    onChange(id,event){
+      if ((event.target.checked)){
+        window.w3.setFavourite(id);
+      }
+      else{
+        window.w3.unsetFavourite(id);
+      }
     },
-
-    setFavourite(id) {
-      window.w3.setFavourite(id);
-    },    
 
     async getUserFavourites(){
       this.favs = await window.w3.getUserFavourites();

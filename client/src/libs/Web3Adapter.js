@@ -1,5 +1,5 @@
 import Web3Service from './Web3Service'
-import ChallengeContract from '../../build/contracts/Challenge.json';
+import FavouritesContract from '../../build/contracts/Favourites.json';
 
 export default {
     data() {
@@ -24,7 +24,7 @@ export default {
                 window.w3 = new Web3Service;
 
                 // connecting to the blockchain and intializing the Users smart contract
-                window.w3.initWithContractJson(ChallengeContract, 'http://127.0.0.1:7545', 'Challenge', 5777)
+                window.w3.initWithContractJson(FavouritesContract, 'http://127.0.0.1:7545', 'Favourites', 5777)
             } 
         }
     }
