@@ -1,7 +1,6 @@
 # trending-repos-ui
-Vue project that connects to trending-repos-api to show trending Github repositories.
-
-Also allows to mark favourites repos and save them in a Smart Contract.
+DAP project that connects to trending-repos-api to show trending Github repositories. 
+Allows to mark favourites repos and save them in a Smart Contract.
 
 # how to run?
 1. Install NPM 
