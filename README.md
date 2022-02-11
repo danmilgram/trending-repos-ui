@@ -1,11 +1,15 @@
 # trending-repos-ui
 Vue project that connects to trending-repos-api to show trending Github repositories.
 
-# how to run?
-1. Install NPM
-1. Install dependecies with *npm-install*
-2. Run with *npm run serve*
+Also allows to mark favourites repos and save them in a Smart Contract.
 
-1. truffle init & config ganache
-2. truffle compile
-3. truffle migrate
+# how to run?
+1. Install NPM 
+2. Install dependecies with *npm-install*
+3. Install Ganache, Metamask
+4. Configure Metamask with Ganache accounts 
+5. Run with *npm run serve*
+
+# how to run contract unit tests?
+Once you have truffle dependency installed, you should run *truffle test* to run the unit tests.
+
