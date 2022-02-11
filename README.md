@@ -5,3 +5,7 @@ Vue project that connects to trending-repos-api to show trending Github reposito
 1. Install NPM
 1. Install dependecies with *npm-install*
 2. Run with *npm run serve*
+
+1. truffle init & config ganache
+2. truffle compile
+3. truffle migrate

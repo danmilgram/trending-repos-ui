@@ -31,8 +31,10 @@
 
 <script>
 import axios from 'axios';
+import Web3Adapter from '../libs/Web3Adapter'
 
 export default {
+  mixins: [Web3Adapter], 
   name: 'Repos',
   data() {
     return {
@@ -51,9 +53,15 @@ export default {
           console.error(error);
         });
     },
+
+    getTest() {
+          window.w3.getTest()
+        } 
+
   },
   created() {
     this.getMessage();
+    this.getTest();
   },
-};
+}
 </script>
