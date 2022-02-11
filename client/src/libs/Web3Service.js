@@ -26,7 +26,7 @@ class Web3Service {
 
                 try {
                     // Request account access if needed
-                    ethereum.enable()
+                    window.ethereum.request({ method: 'eth_requestAccounts' })
                     .then(() => {
                         this.setWeb3(window.web3, addressUrl);
 
@@ -157,15 +157,36 @@ class Web3Service {
        
     }
 
-    getTest() {
+    getUserFavourites() {
         return new Promise((resolve, reject) => {
             this.getMainAccount()
             .then(account => {
-                this.contractInst.get({ from: account }, (error, res) => {
+                console.log(account)
+                this.contractInst.getUserFavorites({ from: account }, (error, res) => {
+                    if (error) reject(error);
+                    
+                    resolve(res);
+                    
+                    //Convert BigInt to string
+                    for (let i = 0; i < res.length; i++) {
+                        res[i] = res[i].toString();
+                      }
+                });
+            })
+            .catch(error => reject(error));
+        });
+    }
+
+
+    setFavourite(id) {
+        return new Promise((resolve, reject) => {
+            this.getMainAccount()
+            .then(account => {
+                console.log(account)
+                this.contractInst.setFavorite(id , { from: account }, (error, res) => {
                     if (error) reject(error);
 
                     resolve(res);
-                    console.log(res)
                 });
             })
             .catch(error => reject(error));

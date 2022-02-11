@@ -13,12 +13,18 @@
                 <tr>
                   <th scope="col">Description</th>
                   <th scope="col">Url</th>
+                  <th scope="col">Fav</th>
                 </tr>
               </thead>
               <tbody>
                 <tr v-for="x in r.repos" v-bind:key="x.id">
                   <td>{{x.description}}</td>
                   <td><a target="_blank" :href="x.url">{{ x.url }}</a></td>
+                  <td>    
+                  <input type="checkbox" 
+                        :checked="favs.includes(x.id.toString())"
+                        @change="setFavourite(x.id)">                     
+                  </td>
                 </tr>
               </tbody>
           </table>
@@ -55,13 +61,25 @@ export default {
     },
 
     getTest() {
-          window.w3.getTest()
-        } 
+      window.w3.getTest();
+    }, 
+
+    listenEvent(){
+      window.w3.listenEvent();
+    },
+
+    setFavourite(id) {
+      window.w3.setFavourite(id);
+    },    
+
+    async getUserFavourites(){
+      this.favs = await window.w3.getUserFavourites();
+    }
 
   },
   created() {
     this.getMessage();
-    this.getTest();
+    this.getUserFavourites();
   },
 }
 </script>
